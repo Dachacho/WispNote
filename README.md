@@ -31,7 +31,3 @@ This is just a fun project to get familiar with Go web servers and htmx for inst
 
 Just messing around with Go and htmx.  
 If you want to learn how to build a simple, modern-feeling web app with Go and no JS (we hate js here), this is a good place to start.
-
----
-
-MIT License.
