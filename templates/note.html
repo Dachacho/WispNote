@@ -1,0 +1,6 @@
+<li hx-target="this" hx-swap="outerHTML">
+  {{.Content}}
+  <button hx-delete="/notes?id={{.ID}}" hx-confirm="Are you sure?">
+    Delete
+  </button>
+</li>

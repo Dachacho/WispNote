@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>WispNotes</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@1.5.10/css/pico.min.css"
+    />
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  </head>
+  <body>
+    <main class="container">
+      <h1>WispNotes</h1>
+
+      <form
+        hx-post="/notes"
+        hx-target="#notes"
+        hx-swap="afterbegin"
+        class="note-form"
+      >
+        <label for="content">Write a new note:</label>
+        <input
+          type="text"
+          id="content"
+          name="content"
+          placeholder="write a note..."
+          required
+        />
+        <button type="submit">Add Note</button>
+      </form>
+
+      <h2>All Notes</h2>
+      <ul id="notes">
+        {{range .Notes}}
+        <li hx-target="this" hx-swap="outerHTML">
+          {{.Content}}
+          <button hx-delete="/notes?id={{.ID}}" hx-confirm="Are you sure?">
+            Delete
+          </button>
+        </li>
+        {{else}}
+        <li><em>No notes yet!</em></li>
+        {{end}}
+      </ul>
+    </main>
+  </body>
+</html>
